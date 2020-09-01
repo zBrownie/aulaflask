@@ -1,0 +1,39 @@
+{%extends 'base.html'%} {% block content%}
+<div class="col-md-4 col-md-offset-4 text-center">
+  <form class="form-signin" action="" method="POST">
+    {{form.csrf_token}}
+    <img
+      class="mb-4"
+      src="https://getbootstrap.com/docs/4.5/assets/brand/bootstrap-solid.svg"
+      alt=""
+      width="72"
+      height="72"
+    />
+    <h1 class="h3 mb-3 font-weight-normal">Informe seus dados</h1>
+    <label for="inputEmail" class="sr-only">Email</label>
+    {{form.username(class="form-control",placeholder="Email")}} {% if
+    form.errors.username %}
+    <div class="alert alert-danger" role="alert">
+      <ul>
+        {%for e in form.erros.username%} {{form.errors.username}} {%endfor%}
+      </ul>
+    </div>
+    {%endif%}
+    <label for="inputPassword" class="sr-only">Password</label>
+    {{form.password(class="form-control",placeholder="Senha")}}
+     {% if
+    form.errors.password %}
+    <div class="alert alert-danger" role="alert"><ul>
+        {%for e in form.erros.password%} {{form.errors.password}} {%endfor%}
+      </ul></div>
+    {%endif%}
+    <div class="checkbox mb-3">
+      <label> {{form.remember_me()}} Remember me </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">
+      Entrar
+    </button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
+  </form>
+</div>
+{% endblock %}
